@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="36px" height="37px" viewBox="0 0 36 37" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01-Homepage" transform="translate(-1113.000000, -3477.000000)" fill="#813D98">
+            <g id="5" transform="translate(0.000000, 3375.000000)">
+                <g id="Group-15" filter="url(#filter-1)" transform="translate(640.000000, 50.000000)">
+                    <g id="Group-11" transform="translate(420.000000, 0.000000)">
+                        <g id="Group" transform="translate(56.000000, 54.000000)">
+                            <path d="M15.12,7.71960784 C10.92,7.71960784 7.44,11.1843137 7.44,15.5 C7.44,19.8156863 10.86,23.2803922 15.12,23.2803922 C19.38,23.2803922 22.8,19.754902 22.8,15.5 C22.8,11.245098 19.32,7.71960784 15.12,7.71960784 L15.12,7.71960784 Z M15.12,20.4843137 C12.42,20.4843137 10.2,18.2352941 10.2,15.5 C10.2,12.7647059 12.42,10.5156863 15.12,10.5156863 C17.82,10.5156863 20.04,12.7647059 20.04,15.5 C20.04,18.2352941 17.82,20.4843137 15.12,20.4843137 L15.12,20.4843137 Z" id="Shape"></path>
+                            <ellipse id="Oval" cx="23.1" cy="7.5372549" rx="1.74" ry="1.7627451"></ellipse>
+                            <path d="M27.6,2.97843137 C26.04,1.3372549 23.82,0.48627451 21.3,0.48627451 L8.94,0.48627451 C3.72,0.48627451 0.24,4.01176471 0.24,9.3 L0.24,21.7607843 C0.24,24.3745098 1.08,26.6235294 2.76,28.2647059 C4.38,29.845098 6.54,30.6352941 9,30.6352941 L21.24,30.6352941 C23.82,30.6352941 25.98,29.7843137 27.54,28.2647059 C29.16,26.6843137 30,24.4352941 30,21.8215686 L30,9.3 C30,6.74705882 29.16,4.55882353 27.6,2.97843137 L27.6,2.97843137 Z M27.24,21.8215686 C27.24,23.7058824 26.7,25.2254902 25.62,26.2588235 C24.54,27.2921569 23.04,27.8392157 21.24,27.8392157 L9,27.8392157 C7.2,27.8392157 5.7,27.2921569 4.62,26.2588235 C3.54,25.1647059 3,23.645098 3,21.7607843 L3,9.3 C3,7.47647059 3.54,5.95686275 4.62,4.8627451 C5.64,3.82941176 7.2,3.28235294 9,3.28235294 L21.36,3.28235294 C23.16,3.28235294 24.66,3.82941176 25.74,4.92352941 C26.76,6.01764706 27.36,7.5372549 27.36,9.3 L27.36,21.8215686 L27.24,21.8215686 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

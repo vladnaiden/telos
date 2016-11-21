@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100px" height="2px" viewBox="0 0 100 2" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40 (33762) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="0%" cy="40.1488543%" fx="0%" fy="40.1488543%" r="100%" id="radialGradient-1">
+            <stop stop-color="#EB7F7F" offset="0%"></stop>
+            <stop stop-color="#F1B6B2" offset="50.5082111%"></stop>
+            <stop stop-color="#EB7F7F" offset="100%"></stop>
+            <stop stop-color="#ED99A6" offset="100%"></stop>
+        </radialGradient>
+        <rect id="path-2" x="0" y="129" width="100" height="2"></rect>
+        <mask id="mask-3" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="100" height="2" fill="white">
+            <use xlink:href="#path-2"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01-Homepage" transform="translate(-60.000000, -335.000000)" stroke-width="28" stroke="url(#radialGradient-1)">
+            <g id="01-Welcome">
+                <g id="Group-2" transform="translate(60.000000, 206.000000)">
+                    <use id="Rectangle-2" mask="url(#mask-3)" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
