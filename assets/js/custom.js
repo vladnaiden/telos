@@ -10,7 +10,6 @@
     window.addEventListener('resize', function () {
         if (window.innerWidth > 991) {
             mobNav.style.display = 'none';
-        } else {
         }
     });
 
@@ -100,8 +99,9 @@ if (!document.getElementsByClassName('home')[0]) {
     });
 
     var submit = document.getElementsByClassName('modal__appointment')[0].getElementsByClassName('button__group button2')[0];
+    var closeModal = document.getElementById('close__modal');
 
-    submit.addEventListener('click', function () {
+    closeModal.addEventListener('click', function () {
         document.getElementsByClassName('modal__appointment')[0].style.display = 'none';
         document.body.removeChild(document.getElementById('modal__backdrop'));
     });
@@ -266,7 +266,6 @@ function setActiveMobile() {
 }
 
 setActiveMobile();
-
 
 
 

@@ -20,7 +20,7 @@ return array(
 
     // Mailchimp
     'mailchimp_support' => true, // ture is activated
-    'mailchimp_api_key' => 'a00869e64afab5d3c7c56d9bf682c011-us13',
+    'mailchimp_api_key' => 'cc93b646eb241489f57b0ba9894c639d-us13',
     'mailchimp_list_id' => 'a2d23d42b1',
 );
 

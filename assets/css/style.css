@@ -110,11 +110,42 @@ section {
 
 .section9, .section2, .section3, .section7, .section10, .section11, .section12, .section13, .section14, .section15, .section16, .footer {
     background-color: #fff;
+    z-index: 9;
+}
+
+.section1,
+.section2,
+.section3,
+.section4,
+.section5,
+.section6,
+.section7,
+.section8,
+.section9,
+.section10,
+.section11,
+.section12,
+.section13,
+.section14,
+.section15,
+.section16,
+.section17,
+.section18,
+.section19,
+.section20,
+.section21,
+.footer {
+    position: relative;
+    z-index: 9;
 }
 
 .header__section {
     min-height: 470px;
     padding-bottom: 130px;
+}
+
+html {
+    height: 100%;
 }
 
 body {
@@ -126,7 +157,7 @@ body {
     word-break: break-word;
     word-wrap: break-word;
     height: 100%;
-    /*min-height: 100%;*/
+    min-height: 100%;
 }
 
 h1, .h1 {
@@ -433,9 +464,10 @@ li {
 /* ==========================================================================
    Header Section
    ========================================================================== */
-.about .header__section .header, .procedures .header__section .header, .wrapping .header__section .header, .therapy .header__section .header, .header__section .header.fixed {
+.about .header__section .header, .procedures .header__section .header, .wrapping .header__section .header, .therapy .header__section .header, .header__section .header.fixed, .contacts .header__section .header {
     position: fixed;
     background-color: #fff;
+    border-bottom: 1px solid #e7e7e7;
 }
 
 .header__logo a {
@@ -529,7 +561,7 @@ li {
     top: 0;
     z-index: 999;
     /*box-shadow: inset 0px -1px 0px 0px rgba(0, 0, 0, 0.10);*/
-    border-bottom: 1px solid #e7e7e7;
+
 }
 
 .header .container {
@@ -1294,7 +1326,7 @@ li {
     /*background-size: 13px 14px;*/
 }
 
-.section11 .content__body--buttons + .content__body--buttons .button__group {
+.section11 .content__body--buttons .button__group + .button__group {
     background-image: url(./../../assets/img/i__man.svg);
     background-repeat: no-repeat;
     /*background-size: 14px 14px;*/
@@ -1302,6 +1334,45 @@ li {
 
 .section11 .uni__table--wrapper:last-child {
     display: none;
+}
+
+.section11 .item:hover {
+    cursor: pointer;
+}
+
+.section11 .item.current {
+    background-color: #EFEAE5;
+    background-image: url(./../../assets/img/section__11--itemChecked.svg);
+    background-repeat: no-repeat;
+    background-position: 22px;
+    padding-left: 45px;
+}
+
+.section11 .item.current:hover {
+    background-image: url(./../../assets/img/i__man.svg);
+}
+
+.orderShow {
+    position: fixed;
+    min-height: 44px;
+    width: 100%;
+    background-color: #813D98;
+    bottom: 0;
+    z-index: 9999;
+    text-align: center;
+    line-height: 44px;
+    display: none;
+}
+
+.orderShow .textWrapper {
+    color: #C8AFD0;
+    font-size: 16px;
+}
+
+.orderShow .orderShowInner {
+    color: #fff;
+    font-weight: 600;
+    padding-left: 10px;
 }
 
 /* ==========================================================================
@@ -1532,6 +1603,24 @@ li {
 }
 
 /* ==========================================================================
+   Contacts
+   ========================================================================== */
+
+.contacts .header__section {
+    min-height: 0;
+    padding-bottom: 75px;
+}
+
+.contacts .contact__us__bottom, .contacts .footer {
+    height: 100%;
+    max-height: 625px;
+}
+
+.contacts .contact__form--wrapper {
+    top: 20% !important;
+}
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 
@@ -1614,8 +1703,8 @@ li {
 
 .footer .contact__form--wrapper {
     width: 230px;
-    height: 300px;
-    padding: 30px 60px 30px 29px;
+    /*height: 300px;*/
+    padding: 30px 60px 0px 29px;
     position: absolute;
     top: 75px;
     left: 70px;
@@ -1633,6 +1722,10 @@ li {
 
 .footer .contact__form--group {
     height: 62px;
+}
+
+.footer .contact__form--group:last-child {
+    padding-bottom: 30px;
 }
 
 .footer .contact__form {
@@ -1714,6 +1807,22 @@ li {
    Modal
    ========================================================================== */
 
+.close__modal {
+    position: absolute;
+    background-color: #EFEAE5;
+    background-image: url(./../../assets/img/section__11--itemChecked.svg);
+    background-repeat: no-repeat;
+    background-position: 22px;
+    padding-left: 45px;
+    height: 20px;
+    width: 10px;
+    right: 0;
+}
+
+.close__modal:hover {
+    cursor: pointer;
+}
+
 .modal__backdrop {
     position: fixed;
     top: 0;
@@ -1789,11 +1898,13 @@ li {
 
 .modal__appointment--group:last-child {
     height: initial;
+    padding-bottom: 30px;
+
 }
 
 .modal__appointment--form {
     font-size: 16px;
-    padding: 16px 30px 30px;
+    padding: 16px 30px 0;
 }
 
 .modal__appointment--label {
@@ -2202,6 +2313,36 @@ li {
 
 @media screen and (max-width: 991px) {
 
+    h1, .h1 {
+        font-size: 2.5em !important;
+        line-height: 1.125em !important;
+    }
+
+    h2, .h2 {
+        font-size: 2em !important;
+        line-height: 1.25em !important;
+    }
+
+    h3, .h3 {
+        font-size: 1.5em !important;
+        line-height: 1.25em !important;
+    }
+
+    h4, .h4 {
+        font-size: 1.125em !important;
+        line-height: 1.22222222em !important;
+    }
+
+    p, .p {
+        font-size: 1em !important;
+        line-height: 1.375em !important;
+    }
+
+    .content__blocks p.block--description {
+        font-size: 40px !important;
+    }
+
+
     .container {
         padding-left: 15px;
         padding-right: 15px;
@@ -2511,6 +2652,53 @@ li {
 }
 
 @media screen and (max-width: 768px) {
+
+    body {
+        font-size: 1em !important;
+        line-height: 1.25em !important;
+    }
+
+    h1, .h1 {
+        font-size: 2em !important;
+        line-height: 1.25em !important;
+    }
+
+    h2, .h2 {
+        font-size: 1.625em !important;
+        line-height: 1.15384615em !important;
+    }
+
+    h3, .h3 {
+        font-size: 1.375em !important;
+        line-height: 1.13636364em !important;
+    }
+
+    h4, .h4 {
+        font-size: 1.125em !important;
+        line-height: 1.11111111em !important;
+    }
+
+    p, .p {
+        font-size: 1em !important;
+        line-height: 1.25em !important;
+    }
+
+    .content__blocks p.block--description {
+        font-size: 40px !important;
+    }
+
+    .section6 .block--right .button__group:first-child .icon {
+        padding: 3px 18px;
+    }
+
+    .section6 .block--right .button__group + .button__group + .button__group .icon {
+        padding: 4px 16px;
+    }
+
+    .section6 .block--right .button__group + .button__group + .button__group + .button__group .icon {
+        padding: 8px 18px;
+    }
+
     .content__blocks .block {
         width: 400px;
         max-width: none;
@@ -2555,7 +2743,7 @@ li {
     }
 
     .pagination {
-        bottom: 103px;
+        bottom: 111px;
         right: 65px;
         top: initial;
     }
@@ -2579,7 +2767,8 @@ li {
     }
 
     .section12 {
-        min-height: 800px;
+        min-height: 850px;
+        padding-bottom: 0;
     }
 
     .section14 .content__body {
@@ -2629,6 +2818,7 @@ li {
 
     .section16 .list {
         width: initial;
+        padding-left: 0;
     }
 
     .section14 .content__body .block + .block .icon {
@@ -2642,8 +2832,74 @@ li {
 
 @media screen and (max-width: 540px) {
 
+    body {
+        font-size: 1em !important;
+        line-height: 1.25em !important;
+    }
+
+    h1, .h1 {
+        font-size: 2em !important;
+        line-height: 1.25em !important;
+    }
+
+    h2, .h2 {
+        font-size: 1.625em !important;
+        line-height: 1.15384615em !important;
+    }
+
+    h3, .h3 {
+        font-size: 1.375em !important;
+        line-height: 1.13636364em !important;
+    }
+
+    h4, .h4 {
+        font-size: 1.125em !important;
+        line-height: 1.11111111em !important;
+    }
+
+    p, .p {
+        font-size: 1em !important;
+        line-height: 1.25em !important;
+    }
+
+    .modal__appointment {
+        top: 0;
+    }
+
+    .content__blocks p.block--description {
+        font-size: 30px !important;
+    }
+
+    .newsletter--email {
+        font-size: 12px;
+    }
+
+    .footer .contact__us__top {
+        padding-left: 40px;
+    }
+
+    .footer .contact__us__top + .contact__us__top .contact__icon {
+        left: -10px;
+    }
+
+    .footer .contact__us__top:first-child .contact__icon {
+        left: -10px;
+    }
+
+    .footer .contact__us__top + .contact__us__top + .contact__us__top .contact__icon {
+        left: -15px;
+    }
+
     .mobile {
         display: none;
+    }
+
+    .header__logo {
+        padding-top: 6px;
+    }
+
+    .header__right .inner:first-child {
+        margin-left: 2px;
     }
 
     .header__section .block__left {
@@ -2663,6 +2919,21 @@ li {
     .content__blocks .block {
         width: 280px;
     }
+
+    .header__section .header__section--buttons {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+    .header__section .header__section--buttons a + a {
+        margin-top: 20px;
+    }
+
 
     .section3 .block--left .subTitle {
         -webkit-box-orient: vertical;
@@ -2713,11 +2984,39 @@ li {
         padding-left: 0;
     }
 
+    .section11 .content__body--buttons .button__group {
+        background-position: 20px 18px;
+    }
+
     .pagination {
-        bottom: 100px;
+        bottom: 110px;
         right: 120px;
         top: initial;
     }
+
+    /*    .orderShow .textWrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            -js-display: flex;
+            display: flex;
+            flex-direction: column;
+        }*/
+    .orderShow {
+        -ms-flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .orderShow .orderShowInner {
+        padding-left: 0;
+    }
+
+    /*
+    .section12 {
+        min-height: 900px;
+        padding-bottom: 0;
+    }
+    */
 
     #slider .prev {
         left: 20px;
@@ -2735,6 +3034,11 @@ li {
         width: 280px;
     }
 
+    .section12 {
+        min-height: 900px;
+        padding-bottom: 0;
+    }
+
     .footer .contact__form--wrapper {
         position: relative;
         margin: 0 auto;
@@ -2744,23 +3048,22 @@ li {
 }
 
 @media screen and (max-width: 400px) {
+    .wrapping .section12 {
+        min-height: 850px;
+        padding-bottom: 0;
+    }
+
+    .button__group {
+        font-size: 14px;
+    }
+
+    .header__right .inner:first-child {
+        margin-left: 6px;
+    }
+
     .container {
         padding-left: 5px;
         padding-right: 5px;
-    }
-
-    .header__section .header__section--buttons {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
-
-    .header__section .header__section--buttons a + a {
-        margin-top: 20px;
     }
 
     .uni__table .list .item span:first-child {
@@ -2817,6 +3120,7 @@ li {
 
     .section13 .item {
         width: 100%;
+        flex-basis: initial;
     }
 
     .footer .content__body {
@@ -2824,6 +3128,7 @@ li {
     }
 
 }
+
 
 @media screen and (min-width: 992px) {
 
@@ -2847,10 +3152,7 @@ li {
         display: -ms-flexbox;
         -js-display: flex;
         display: flex;
-    }
-
-    .header__section {
-        z-index: -1;
+        z-index: 1;
     }
 
     .home .header__section .header__section--background {
@@ -2891,4 +3193,28 @@ li {
     .header__section .block__right .header__section--background {
         background-size: contain;
     }
+}
+
+.hidden {
+    display: none !important
+}
+
+.alert-success {
+    color: #3c763d;
+    border-color: #d6e9c6;
+    text-align: center;
+}
+
+.alert-danger {
+    color: #a94442;
+    border-color: #ebccd1;
+    text-align: center;
+}
+
+.section2 .alert-success {
+    height: 70px;
+}
+
+.section2 .alert-danger {
+    height: 70px;
 }

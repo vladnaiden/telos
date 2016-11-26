@@ -26,8 +26,11 @@ window.onload = function () {
     var slider = document.querySelector("#slider");
 
     var slide_count = slider.children[0].children[0].childElementCount;
+
     var slide_width = slider.children[0].children[0].firstElementChild.clientWidth;
+
     var slider_width = slide_count * slide_width;
+
 
     // slider width
     slider.children[0].children[0].style.width = slider_width + "px";
@@ -55,13 +58,22 @@ window.onload = function () {
     var currentItem;
     var currentClassName;
     var firstClick = false;
+    var itemTochange = '';
+
+    var items = 4;
+    var item = 1;
+
 
     function current_Item() {
         currentItem = offset / slide_width;
+
         for (var i = 0; i < slide_count; i++) {
+
             slider.children[2].children[i].className = "";
         }
+
         slider.children[2].children[currentItem].className = "current";
+
         // Show text
         for (var u = 0; u < slider.children[0].children[0].children[currentItem].childElementCount; u++) {
             if (slider.children[0].children[0].children[currentItem].children[u].classList[0] == "slide-text") {
@@ -69,7 +81,9 @@ window.onload = function () {
                 slider.children[0].children[0].children[currentItem].children[u].className = currentClassName + " show";
             }
         }
+
         firstClick = true;
+
     }
 
     function hideText() {
@@ -86,6 +100,7 @@ window.onload = function () {
 
     function nextClick() {
         if (offset == slider_width - slide_width) {
+            console.log(offset);
             clearAnimation(sliding);
             return false
         }
@@ -119,6 +134,7 @@ window.onload = function () {
         hideText();
         (function animloop() {
             sliding = requestAnimFrame(animloop);
+
             nextClick();
         })();
         return false
@@ -131,6 +147,30 @@ window.onload = function () {
         })();
         return false
     };
+
+
+    // while (offset != (slider_width - slide_width)) {
+    //
+    //     nine();
+    //
+    // }
+
+    function timeoutRunner() {
+        setTimeout(function () {
+            timeoutRunner();
+        }, 20000);
+        hideText();
+        (function animloop() {
+            sliding = requestAnimFrame(animloop);
+            nextClick();
+        })();
+        return false;
+
+    }
+
+    timeoutRunner();
+
+
 
 
     /*************************************
@@ -197,13 +237,12 @@ function navScroll() {
         header.className = 'header fixed';
         document.getElementsByClassName('nav__procedures--link')[0].addEventListener('mouseover', function () {
             document.getElementsByClassName('header')[0].style.height = '200px';
+            header.style.borderBottom = '1px solid #e7e7e7';
         }, false);
 
         document.getElementsByClassName('nav__procedures--link')[0].addEventListener('mouseleave', function () {
             document.getElementsByClassName('header')[0].style.height = '74px';
         }, false);
-    } else {
-        header.className = 'header';
     }
 }
 

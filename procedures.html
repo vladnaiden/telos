@@ -6,6 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Robots" content="ALL">
     <title></title>
+    <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/img/ico/favicon.png">
 </head>
 <body>
 <section class="header__section">
@@ -26,7 +35,7 @@
                     </li>
 
                     <li class="item"><a href="./about.html">О салоне</a></li>
-                    <li class="item"><a href="#contact">Контакты</a></li>
+                    <li class="item"><a href="./contacts.html">Контакты</a></li>
                 </ul>
             </nav>
             <div class="header__right">
@@ -48,7 +57,7 @@
             <li class="item"><a href="./proceduresWrapping.html">Обертывания</a></li>
 
             <li class="item"><a href="./about.html">О салоне</a></li>
-            <li class="item"><a href="#contact">Контакты</a></li>
+            <li class="item"><a href="./contacts.html">Контакты</a></li>
             <li class="item "><a href="#" class="modalBox">Записаться на прием</a></li>
         </ul>
     </nav>
@@ -290,6 +299,11 @@
     </div>
 </section>
 
+<div class="orderShow">
+    <span class="textWrapper">Выбрано <span class="orderNumber">7</span> услуг (<span class="orderValue">3156</span> грн.)  </span>
+    <a href="#" class="orderShowInner modalBox"> Записаться на консультацию</a>
+</div>
+
 <footer class="footer" id="contact">
     <div class="borderTopBto">
         <div class="container">
@@ -298,9 +312,7 @@
                     <div class="contact__icon"><i class="icon cntct--icon"></i></div>
                     <span class="cntct--title">Адрес</span>
                     <span class="cntct--description">Киев, ул. Ломоносова, 73-А</span>
-                    <span class="cntct--title"><a
-                            href="https://www.google.com/maps/dir/50.4303885,30.5046767/Mykhaila+Lomonosova+Street,+73%D0%90,+73A,+Kyiv,+Ukraine/@50.4112668,30.4636114,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x40d4c8e734c0c939:0x46140ef06f2fb3e!2m2!1d30.4722406!2d50.3868455"
-                            class="cntct--title cntct--link">Проложить маршрут</a></span>
+                    <span class="cntct--title"><a href="https://www.google.com/maps/dir/50.4303885,30.5046767/Mykhaila+Lomonosova+Street,+73%D0%90,+73A,+Kyiv,+Ukraine/@50.4112668,30.4636114,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x40d4c8e734c0c939:0x46140ef06f2fb3e!2m2!1d30.4722406!2d50.3868455" class="cntct--title cntct--link">Проложить маршрут</a></span>
                 </div>
                 <div class="contact__us__top">
                     <div class="contact__icon"><i class="icon cntct--icon"></i></div>
@@ -319,14 +331,15 @@
         </div>
     </div>
     <div class="contact__us__bottom">
-        <div class="contact__form--wrapper" id="contact-form-gmap-msg">
+        <div class="contact__form--wrapper">
             <div class="content__head">
                 <span class="content__head--title">Свяжитесь с нами</span>
             </div>
-            <form action="#" class="contact__form" id="contact-form-gmap" method="post">
-                <span class="contact__us__form--title"></span>
-                <input type="hidden" name="action" value="send_contact_form"/>
+            <div class="alert hidden" id="contact-form-gmap-msg"></div>
 
+            <form action="#" class="contact__form" id="contact-form-gmap" method="post">
+                <input type="hidden" name="action" value="send_contact_form"/>
+                <span class="contact__us__form--title"></span>
                 <div class="contact__form--group">
                     <label for="first_last_name" class="contact__form--label">ваше имя:</label>
                     <input type="text" name="Имя" class="contact__form--input" id="first_last_name"
@@ -354,6 +367,7 @@
     </div>
 </footer>
 <div class="modal__appointment">
+    <div id="close__modal" class="close__modal"></div>
     <div class="modal__content__head">
         <span class="h3">Записаться на прием</span>
     </div>
@@ -361,13 +375,13 @@
     <div class="modal__content__body" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel"
          aria-hidden="true" data-backdrop="static">
         <form action="#" class="modal__appointment--form" method="post" id="appointment-form" name="appointment-form">
-            <span class="contact__us__form--title"></span>
             <input type="hidden" name="action" value="send_appointment_form"/>
-
-            <div class="modal__appointment--group" id="appointment-form-msg">
+            <span class="contact__us__form--title"></span>
+            <div class="alert hidden" id="appointment-form-msg"></div>
+            <div class="modal__appointment--group">
                 <!--<label for="modal_date" class="modal__appointment--label">дата</label>-->
                 <span class="input-group-addon" id="Дата"></span>
-                <span class="modal__appointment--label">ваше имя</span>
+                <span class="modal__appointment--label">ваша дата</span>
                 <input type="text" class="datepicker modal__appointment--input" name="Дата"
                        placeholder="Дата" aria-describedby="appointment-date">
 
@@ -391,7 +405,7 @@
                        placeholder="Ваш телефон">
             </div>
             <div class="modal__appointment--group">
-                <button type="submit" class="button__group button2">Отправить запрос <i
+                <button type="submit" class="button__group button2 btn-submit">Отправить запрос <i
                         class="fa fa-caret-right"></i></button>
             </div>
         </form>
@@ -399,7 +413,6 @@
 </div>
 
 </body>
-<link rel="stylesheet" href="./assets/css/style.css">
 <script src="./assets/js/jquery-1.11.3.min.js"></script>
 <script src="./assets/js/flexibility.js"></script>
 <script src="./assets/js/bootstrap-datepicker.min.js"></script>

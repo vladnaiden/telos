@@ -56,3 +56,64 @@ function listsContentChange() {
 }
 
 listsContentChange();
+
+//Selecting procedure
+//-------------------------------------------------------------
+
+
+(function () {
+    var numProcSelected = 0;
+    var arrProcSelected = [];
+    var lists = document.getElementsByClassName('section11')[0].getElementsByClassName('content__body')[0].getElementsByClassName('item');
+    var orderValue = document.getElementsByClassName('orderValue')[0];
+    var orderNumber = document.getElementsByClassName('orderNumber')[0];
+
+    var orderShowDiv = document.getElementsByClassName('orderShow')[0];
+
+    function selectProcedure() {
+        for (var i = 0; i < lists.length; i++) {
+            (function () {
+                var itemElement = lists[i];
+
+                lists[i].addEventListener('click', function () {
+                    if (itemElement.className.indexOf('current') < 1) {
+                        itemElement.className += ' current';
+                        arrProcSelected.push(itemElement);
+                        numProcSelected += 1;
+                    } else if (itemElement.className.indexOf('current') > 1) {
+                        itemElement.className = 'item';
+                        arrProcSelected.splice(arrProcSelected.indexOf(this), 1);
+                        numProcSelected -= 1;
+                    }
+
+                    if (numProcSelected >= 1) {
+                        orderShowDiv.style.display = 'flex';
+                    } else {
+                        orderShowDiv.style.display = 'none';
+                    }
+
+                    getPriceOfProc();
+                })
+            }(i));
+        }
+    }
+
+    function getPriceOfProc() {
+        var itemNumber = 0;
+        orderValue.innerHTML = '';
+        orderNumber.innerHTML = '';
+        if (arrProcSelected.length > 0) {
+            for (var i = 0; i < arrProcSelected.length; i++) {
+                itemNumber += parseInt(arrProcSelected[i].getElementsByTagName('span')[1].innerHTML, 10);
+                orderValue.innerHTML = itemNumber;
+                orderNumber.innerHTML = numProcSelected;
+            }
+        }
+
+    }
+
+    selectProcedure();
+
+}());
+
+

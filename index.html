@@ -6,6 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Robots" content="ALL">
     <title></title>
+    <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/img/ico/favicon.png">
+
 </head>
 <body>
 <section class="header__section">
@@ -26,7 +36,7 @@
                     </li>
 
                     <li class="item"><a href="./about.html">О салоне</a></li>
-                    <li class="item"><a href="#contact">Контакты</a></li>
+                    <li class="item"><a href="./contacts.html">Контакты</a></li>
                 </ul>
             </nav>
             <div class="header__right">
@@ -48,7 +58,7 @@
             <li class="item"><a href="./proceduresWrapping.html">Обертывания</a></li>
 
             <li class="item"><a href="./about.html">О салоне</a></li>
-            <li class="item"><a href="#contact">Контакты</a></li>
+            <li class="item"><a href="./contacts.html">Контакты</a></li>
             <li class="item "><a href="#" class="modalBox">Записаться на прием</a></li>
         </ul>
     </nav>
@@ -116,9 +126,12 @@
         <div class="content__head">
             <span class="title h2">Дарим процедуру бесплатно!</span>
             <p class="description">Подпишитесь сейчас и получите процедуру лазерной эпиляции бесплатно!</p>
+            <div class="alert hidden" id="newsletter-form-msg"></div>
         </div>
+
         <div class="content__body">
             <div class="newsletter--block">
+
                 <form action="#" method="post" id="newsletter-form">
                     <input type="hidden" name="action" value="send_newsletter_form"/>
                     <div class="input__group--newsletter">
@@ -314,7 +327,7 @@
                     <div class="contact__icon"><i class="icon cntct--icon"></i></div>
                     <span class="cntct--title">Адрес</span>
                     <span class="cntct--description">Киев, ул. Ломоносова, 73-А</span>
-                    <span class="cntct--title"><a href="" class="cntct--title cntct--link">Проложить маршрут</a></span>
+                    <span class="cntct--title"><a href="https://www.google.com/maps/dir/50.4303885,30.5046767/Mykhaila+Lomonosova+Street,+73%D0%90,+73A,+Kyiv,+Ukraine/@50.4112668,30.4636114,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x40d4c8e734c0c939:0x46140ef06f2fb3e!2m2!1d30.4722406!2d50.3868455" class="cntct--title cntct--link">Проложить маршрут</a></span>
                 </div>
                 <div class="contact__us__top">
                     <div class="contact__icon"><i class="icon cntct--icon"></i></div>
@@ -371,6 +384,7 @@
 
 
 <div class="modal__appointment">
+    <div id="close__modal" class="close__modal"></div>
     <div class="modal__content__head">
         <span class="h3">Записаться на прием</span>
     </div>
@@ -378,13 +392,13 @@
     <div class="modal__content__body" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel"
          aria-hidden="true" data-backdrop="static">
         <form action="#" class="modal__appointment--form" method="post" id="appointment-form" name="appointment-form">
-            <span class="contact__us__form--title"></span>
             <input type="hidden" name="action" value="send_appointment_form"/>
-
-            <div class="modal__appointment--group" id="appointment-form-msg">
+            <span class="contact__us__form--title"></span>
+            <div class="alert hidden" id="appointment-form-msg"></div>
+            <div class="modal__appointment--group">
                 <!--<label for="modal_date" class="modal__appointment--label">дата</label>-->
                 <span class="input-group-addon" id="Дата"></span>
-                <span class="modal__appointment--label">ваше имя</span>
+                <span class="modal__appointment--label">ваша дата</span>
                 <input type="text" class="datepicker modal__appointment--input" name="Дата"
                        placeholder="Дата" aria-describedby="appointment-date">
 
@@ -408,94 +422,17 @@
                        placeholder="Ваш телефон">
             </div>
             <div class="modal__appointment--group">
-                <button type="submit" class="button__group button2">Отправить запрос <i
+                <button type="submit" class="button__group button2 btn-submit">Отправить запрос <i
                         class="fa fa-caret-right"></i></button>
             </div>
         </form>
     </div>
 </div>
 
-<!--<form action="#" method="post" id="appointment-form" name="appointment-form">
-    <input type="hidden" name="action" value="send_appointment_form"/>
-
-    &lt;!&ndash; Modal header start &ndash;&gt;
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title h4" id="appointmentModalLabel">Записаться на прием</h4>
-    </div>
-    &lt;!&ndash; Modal header end &ndash;&gt;
-
-    &lt;!&ndash; Modal body start &ndash;&gt;
-    <div class="modal-body">
-        &lt;!&ndash; Appointment Info start &ndash;&gt;
-        <div class="info-box">
-            <h3 class="h3"><i class="fa fa-info-circle"></i> После заполнения формы Вы получите
-                подтверждение записи на
-                прием!</h3>
-        </div>
-        &lt;!&ndash; Appointment Info end &ndash;&gt;
-
-
-        &lt;!&ndash; Appointment Service and Date start &ndash;&gt;
-        <div class="service-and-date">
-            <div class="alert hidden" id="appointment-form-msg"></div>
-            <div class="date-select">
-                <div class="input-group">
-                    <span class="input-group-addon" id="Дата"><i class="fa fa-calendar"></i></span>
-                    <input type="text" class="form-control datepicker" name="Дата"
-                           placeholder="Выберите дату" aria-describedby="appointment-date">
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        &lt;!&ndash; Appointment Service and Date end &ndash;&gt;
-
-        <hr/>
-
-        &lt;!&ndash; Appointment Personal Information start &ndash;&gt;
-        <div class="personal-information">
-            <h2 class="h2">Личная Информация</h2>
-            <div class="form-group first-name-group">
-                <label for="first-name">Ваше имя</label>
-                <input type="text" name="Имя" class="form-control" id="first-name"
-                       placeholder="Введите Ваше имя">
-            </div>
-            <div class="form-group email-group">
-                <label for="email">Email</label>
-                <input type="text" name="email" class="form-control" id="email"
-                       placeholder="Введите Ваш Email">
-            </div>
-            <div class="clearfix"></div>
-            <div class="form-group phone-group">
-                <label for="appointment-phone">Телефон</label>
-                <input type="text" name="Телефон" class="form-control" id="appointment-phone"
-                       placeholder="Введите Ваш номер телефона">
-            </div>
-
-            <div class="clearfix"></div>
-        </div>
-        &lt;!&ndash; Appointment Personal Information end &ndash;&gt;
-
-    </div>
-    &lt;!&ndash; Modal body end &ndash;&gt;
-
-    &lt;!&ndash; Modal footer start &ndash;&gt;
-    <div class="modal-footer">
-                  <span class="btn-border btn-gray">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                  </span>
-        <span class="btn-border btn-yellow">
-                    <button type="submit" class="btn btn-submit btn-primary btn-success">Подтвердить</button>
-                  </span>
-    </div>
-    &lt;!&ndash; Modal footer end &ndash;&gt;
-
-</form>-->
 
 
 </body>
-<link rel="stylesheet" href="./assets/css/bootstrap-datepicker.min.css">
-<link rel="stylesheet" href="./assets/css/style.css">
+
 <script src="./assets/js/jquery-1.11.3.min.js"></script>
 <script src="./assets/js/flexibility.js"></script>
 <script src="./assets/js/bootstrap-datepicker.min.js"></script>
