@@ -464,7 +464,7 @@ li {
 /* ==========================================================================
    Header Section
    ========================================================================== */
-.about .header__section .header, .procedures .header__section .header, .wrapping .header__section .header, .therapy .header__section .header, .header__section .header.fixed, .contacts .header__section .header {
+.about .header__section .header, .procedures .header__section .header, .wrapping .header__section .header, .therapy .header__section .header, .header__section .header.fixed, .contacts .header__section .header, .benefits .header__section .header {
     position: fixed;
     background-color: #fff;
     border-bottom: 1px solid #e7e7e7;
@@ -479,11 +479,11 @@ li {
 }
 
 .home .header__section .header__section--background {
-    background-image: url(./../../assets/img/header__section__bg--home.png);
+    background-image: url(./../../assets/img/header__section__bg--home.jpg);
 }
 
 .procedures .header__section .header__section--background {
-    background-image: url(./../../assets/img/header__section__bg--procedures.png);
+    background-image: url(./../../assets/img/header__section__bg--procedures.jpg);
 }
 
 .therapy .header__section .header__section--background {
@@ -495,7 +495,7 @@ li {
 }
 
 .about .header__section .header__section--background {
-    background-image: url(./../../assets/img/header__section__bg--about.png);
+    background-image: url(./../../assets/img/header__section__bg--about.jpg);
 }
 
 /*.wrapping .header__section .header__section--background {*/
@@ -775,8 +775,6 @@ li {
 .header__section .header__section--buttons .button2 {
     width: 225px;
 }
-
-
 
 /* ==========================================================================
    Section-9
@@ -1376,6 +1374,9 @@ li {
     background-color: #813D98;
     bottom: 0;
     z-index: 9999;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
     text-align: center;
     line-height: 44px;
     display: none;
@@ -1623,7 +1624,7 @@ li {
    Contacts
    ========================================================================== */
 
-.contacts .header__section {
+.contacts .header__section, .benefits .header__section {
     min-height: 0;
     padding-bottom: 75px;
 }
@@ -1657,11 +1658,11 @@ li {
 }
 
 .contact__us__bottom {
-    min-height: 500px;
+    min-height: 600px;
     background-image: url('./../../assets/img/footer__bg.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 100%;
+    background-position: 40%;
     position: relative;
 }
 
@@ -1857,7 +1858,7 @@ li {
     /* padding-top: 25px; */
     /* font-size: 16px; */
     width: 340px;
-    height: 520px;
+    /*height: 520px;*/
     margin: 0 auto;
     opacity: 1;
     position: fixed;
@@ -2326,6 +2327,10 @@ li {
         padding-top: 20px;
     }
 
+    /*.contact__us__bottom {*/
+    /*background-position: 0;*/
+    /*}*/
+
 }
 
 @media screen and (max-width: 991px) {
@@ -2358,7 +2363,6 @@ li {
     .content__blocks p.block--description {
         font-size: 40px !important;
     }
-
 
     .container {
         padding-left: 15px;
@@ -2955,7 +2959,6 @@ li {
         margin-top: 20px;
     }
 
-
     .section3 .block--left .subTitle {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -3038,7 +3041,6 @@ li {
         padding-bottom: 0;
     }
     */
-
     #slider .prev {
         left: 20px;
     }
@@ -3154,6 +3156,10 @@ li {
     .header__section .header__section--buttons .button2:last-child {
         margin-left: 20px;
     }
+
+    .mobile__only {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -3181,44 +3187,6 @@ li {
         z-index: 1;
     }
 
-    .home .header__section .header__section--background {
-        background-image: url(./../../assets/img/header__section__bg--home__wide.png);
-    }
-
-    .home .header__section {
-        background-color: #fff;
-    }
-
-
-    .procedures .header__section {
-        background-color: #E5E4E1;
-    }
-
-
-    .therapy .header__section {
-        background-color: #EFEAE5;
-    }
-
-
-    .wrapping .header__section {
-        background-color: #EEEBEE;
-    }
-
-    .about .header__section {
-        background-color: #E6E7EB;
-    }
-
-    .header__section > .header__section--background {
-        display: none;
-    }
-
-    .header__section .block__right {
-        display: block;
-    }
-
-    .header__section .block__right .header__section--background {
-        background-size: contain;
-    }
 }
 
 .hidden {
@@ -3243,4 +3211,117 @@ li {
 
 .section2 .alert-danger {
     height: 70px;
+}
+
+@media screen and (min-width: 1400px) {
+    /*
+    .home .header__section .header__section--background {
+        background-image: url(./../../assets/img/header__section__bg--home__wide.png);
+    }
+    */
+
+    .home .header__section {
+        background-color: #F8F8F8;
+    }
+
+    .procedures .header__section {
+        background-color: #EDEEF0;
+    }
+
+    .therapy .header__section {
+        background-color: #EFEAE5;
+    }
+
+    .wrapping .header__section {
+        background-color: #EEEBEE;
+    }
+
+    .about .header__section {
+        background-color: #E6E7EB;
+    }
+
+    .header__section > .header__section--background {
+        display: none;
+    }
+
+    .header__section .block__right {
+        display: block;
+    }
+
+    .header__section .block__right .header__section--background {
+        background-size: contain;
+    }
+
+    .home .header__section .block__right .header__section--background {
+        background-size: contain;
+        background-position: -300px 0
+    }
+
+    .procedures .header__section .block__right .header__section--background {
+        background-position: -180px 0
+    }
+
+    .about .header__section .block__right .header__section--background {
+        background-position: -400px 0
+    }
+
+    .wrapping .header__section .block__right .header__section--background {
+        background-position: -500px 0
+    }
+
+    .therapy .header__section .block__right .header__section--background {
+        background-size: contain;
+        background-position: -500px 0
+    }
+
+}
+
+/* ==========================================================================
+   @Validation
+   ========================================================================== */
+
+#modalresultPhone, #modalresultEmail {
+    display: none;
+}
+
+.modal__appointment--group.err {
+    height: 92px;
+}
+
+.modal__appointment--group.err label {
+    color: #B30000;
+}
+
+.modal__appointment--group.err .modal__appointment--input {
+    border-bottom: solid 1px #B30000;
+}
+
+.modal__appointment--group.err span {
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #B30000;
+}
+
+#contactsResultPhone, #contactsResultEmail {
+    display: none;
+}
+
+.contact__form--group.err {
+    height: 92px;
+}
+
+.contact__form--group.err label {
+    color: #B30000;
+}
+
+.contact__form--group.err .contact__form--input {
+    border-bottom: solid 1px #B30000;
+}
+
+.contact__form--group.err span {
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #B30000;
 }

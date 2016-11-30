@@ -50,6 +50,8 @@
     </header>
     <nav class="header__navigation landscape">
         <ul class="list">
+            <li class="item mobile__only"><a href="./index.html">Главная</a></li>
+            <li class="item mobile__only"><a href="./benefits.html">Акции</a></li>
             <li class="item"><a href="./procedures.html">Лазерная эпиляция</a></li>
             <li class="item"><a href="./proceduresTherapy.html">Прессотерапия</a></li>
             <li class="item"><a href="./proceduresWrapping.html">Обертывания</a></li>
@@ -78,7 +80,7 @@
 </section>
 <section class="section12">
     <div class="container">
-        <div class="content__body"><img src="./assets/img/section11__sublime1.png"
+        <div class="content__body"><img src="./assets/img/section12__round--image__therapy.png"
                                         alt="" class="image--left">
             <div class="content"><span class="h2">Как проводится процедура?</span>
                 <p>Прессотерапия проводится сорок – сорок пять минут, в течение которых пациент спокойно лежит на
@@ -156,18 +158,20 @@
                            placeholder="Ваше имя">
                 </div>
 
-                <div class="contact__form--group">
+                <div class="contactsEmailValidation contact__form--group">
                     <label for="email_address" class="contact__form--label">ваш email:</label>
                     <input type="email" name="email" class="contact__form--input" id="email_address"
                            placeholder="Ваш E-mail">
+                    <span id='contactsResultEmail'>Введите почту в правильном формате, например: name@mail.ru</span>
                 </div>
-                <div class="contact__form--group">
+                <div class="contactsPhoneValidation contact__form--group">
                     <!--<label for="contact-form-phone" class="contact__form&#45;&#45;label">ваш телефон:</label>-->
-                    <input type="text" name="Телефон" class="contact__form--input phone" id="contact-form-phone"
+                    <input type="tel" pattern='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$' name="Телефон" class="contact__form--input phone" id="contact-form-phone"
                            placeholder="Ваш телефон">
+                    <span id='contactsResultPhone'>Ошибка! Не верно введен номер телефона. Пример: 050 652 8067</span>
                 </div>
                 <div class="contact__form--group">
-                    <button type="submit" class="button__group button2">Отправить запрос <i
+                    <button type="submit" class="button__group button2" id="validateContacts">Отправить запрос <i
                             class="fa fa-caret-right"></i></button>
                 </div>
             </form>
@@ -204,18 +208,22 @@
                        placeholder="Ваше имя">
             </div>
 
-            <div class="modal__appointment--group">
+            <div class="emailValidation modal__appointment--group  ">
                 <label for="email" class="modal__appointment--label">ваш email</label>
                 <input type="text" name="email" class="modal__appointment--input" id="email"
                        placeholder="Ваш E-mail">
+                <span id='modalresultEmail'>Введите почту в правильном формате, например: name@mail.ru</span>
             </div>
-            <div class="modal__appointment--group">
+
+            <div class="phoneValidation modal__appointment--group ">
                 <label for="appointment-phone" class="modal__appointment--label">ваш телефон</label>
-                <input type="text" name="Телефон" class="modal__appointment--input phone" id="appointment-phone"
+                <input type="tel" pattern='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$' name="Телефон" class="modal__appointment--input phone" id="appointment-phone"
                        placeholder="Ваш телефон">
+                <span id='modalresultPhone'>Ошибка! Не верно введен номер телефона. Пример: 050 652 8067</span>
             </div>
+
             <div class="modal__appointment--group">
-                <button type="submit" class="button__group button2 btn-submit">Отправить запрос <i
+                <button type="submit" class="button__group button2 btn-submit" id='validateModal'>Отправить запрос <i
                         class="fa fa-caret-right"></i></button>
             </div>
         </form>

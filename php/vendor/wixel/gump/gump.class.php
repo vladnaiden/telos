@@ -19,9 +19,9 @@ class GUMP
 
 	// Instance attribute containing errors from last run
 	protected $errors = array();
-	
+
 	// Contain readable field names that have been set manually
-	protected static $fields = array();	
+	protected static $fields = array();
 
 	// Custom validation methods
 	protected static $validation_methods = array();
@@ -44,9 +44,9 @@ class GUMP
 
 	// field characters below will be replaced with a space.
 	protected $fieldCharsToRemove = array('_','-');
-	
-	// ** ------------------------- Validation Helpers ---------------------------- ** //	
-	
+
+	// ** ------------------------- Validation Helpers ---------------------------- ** //
+
 	/**
 	 * Shorthand method for inline validation
 	 *
@@ -121,7 +121,7 @@ class GUMP
 	public static function add_validator($rule, $callback)
 	{
 		$method = 'validate_'.$rule;
-		
+
 		if(method_exists(__CLASS__, $method) || isset(self::$validation_methods[$rule])) {
 			throw new Exception("Validator rule '$rule' already exists.");
 		}
@@ -143,7 +143,7 @@ class GUMP
 	public static function add_filter($rule, $callback)
 	{
 		$method = 'filter_'.$rule;
-		
+
 		if(method_exists(__CLASS__, $method) || isset(self::$filter_methods[$rule])) {
 			throw new Exception("Filter rule '$rule' already exists.");
 		}
@@ -248,9 +248,9 @@ class GUMP
 		{
 			$fields = array_keys($input);
 		}
-		
+
 		$return = array();
-		
+
 		foreach($fields as $field)
 		{
 			if(!isset($input[$field]))
@@ -323,9 +323,9 @@ class GUMP
 			#}
 
 			$rules = explode('|', $rules);
-			
+
 	        if(in_array("required", $rules) || (isset($input[$field]) && trim($input[$field]) != ''))
-	        {			
+	        {
 				foreach($rules as $rule)
 				{
 					$method = NULL;
@@ -358,7 +358,7 @@ class GUMP
 							$result = call_user_func(self::$validation_methods[$rule], $field, $input, $param);
 
 							$result = $this->$method($field, $input, $param);
-	
+
 							if(is_array($result)) // Validation Failed
 							{
 								$this->errors[] = $result;
@@ -375,14 +375,14 @@ class GUMP
 
 		return (count($this->errors) > 0)? $this->errors : TRUE;
 	}
-	
+
 	/**
 	 * Set a readable name for a specified field names
 	 *
 	 * @param string $field
 	 * @param string $readable_name
 	 * @return void
-	 */	
+	 */
 	public static function set_field_name($field, $readable_name)
 	{
 		self::$fields[$field] = $readable_name;
@@ -406,10 +406,10 @@ class GUMP
 		$resp = array();
 
 		foreach($this->errors as $e) {
-		
+
 			$field = ucwords(str_replace($this->fieldCharsToRemove, chr(32), $e['field']));
 			$param = $e['param'];
-			
+
 			// Let's fetch explicit field names if they exist
 			if(array_key_exists($e['field'], self::$fields)) {
 				$field = self::$fields[$e['field']];
@@ -507,7 +507,7 @@ class GUMP
 					$resp[] = "Поле <span class=\"$field_class\">$field</span> должно начинаться с $param";
 					break;
 				default:
-					$resp[] = "Поле <span class=\"$field_class\">$field</span> является недействительным";				
+					$resp[] = "Поле <span class=\"$field_class\">$field</span> является недействительным";
 			}
 		}
 
@@ -540,7 +540,7 @@ class GUMP
 
 			$field = ucwords(str_replace(array('_','-'), chr(32), $e['field']));
 			$param = $e['param'];
-			
+
 			// Let's fetch explicit field names if they exist
 			if(array_key_exists($e['field'], self::$fields)) {
 				$field = self::$fields[$e['field']];
@@ -629,7 +629,7 @@ class GUMP
 					$resp[$field] = "The $field field needs to be a numeric value, equal to, or lower than $param";
 					break;
 				default:
-					$resp[$field] = "The $field field is invalid";				
+					$resp[$field] = "The $field field is invalid";
 			}
 		}
 
@@ -881,7 +881,7 @@ class GUMP
 	{
 		return strip_tags($value, self::$basic_tags);
 	}
-	
+
 	/**
 	 * Convert the provided numeric value to a whole number
 	 *
@@ -893,11 +893,11 @@ class GUMP
 	protected function filter_whole_number($value, $params = NULL)
 	{
 		return intval($value);
-	}	
+	}
 
 	// ** ------------------------- Validators ------------------------------------ ** //
 
-		
+
 	/**
 	 * Verify that a value is contained within the pre-defined value set
 	 *
@@ -937,12 +937,12 @@ class GUMP
 			'param' => $param
 		);
 
-	}	
-	
+	}
+
 	/**
 	 * Verify that a value is contained within the pre-defined value set.
 	 * OUTPUT: will NOT show the list of values.
-	 * 
+	 *
 	 * Usage: '<index>' => 'containsList,value;value;value'
 	 *
 	 * @access protected
@@ -953,13 +953,13 @@ class GUMP
 	protected function validate_containsList($field, $input, $param = NULL)
 	{
 		$param = trim(strtolower($param));
-	
+
 		$value = trim(strtolower($input[$field]));
-	
+
 		$param = explode(";", $param);
-		
+
 		// consider: in_array(strtolower($value), array_map('strtolower', $param)
-		
+
 		if(in_array($value, $param)) { // valid, return nothing
 			return;
 		} else {
@@ -971,9 +971,9 @@ class GUMP
 			);
 		}
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Verify that a value is NOT contained within the pre-defined value set.
 	 * OUTPUT: will NOT show the list of values.
@@ -988,11 +988,11 @@ class GUMP
 	protected function validate_doesNotContainList($field, $input, $param = NULL)
 	{
 		$param = trim(strtolower($param));
-	
+
 		$value = trim(strtolower($input[$field]));
-	
+
 		$param = explode(";", $param);
-				
+
 		if( !in_array($value, $param)) { // valid, return nothing
 			return;
 		} else {
@@ -1004,7 +1004,7 @@ class GUMP
 			);
 		}
 	}
-	
+
 	/**
 	 * Check if the specified key is present and not empty
 	 *
@@ -1463,9 +1463,9 @@ class GUMP
 		{
 			return;
 		}
-		
+
 		$url = parse_url(strtolower($input[$field]));
-		
+
 		if(isset($url['host'])) {
 			$url = $url['host'];
 		}
@@ -1854,28 +1854,28 @@ class GUMP
 
 	/**
 	 * Determine if the provided value starts with param
-	 * 
+	 *
 	 * Usage: '<index>' => 'starts,Z'
-	 *	
+	 *
 	 * @access protected
 	 * @param  string $field
 	 * @param  array $input
 	 * @return mixed
-	 */	
+	 */
 	protected function validate_starts($field, $input, $param = NULL)
-	{	
+	{
 		if(!isset($input[$field]) || empty($input[$field]))
 		{
 			return;
 		}
-		
+
 		if(strpos($input[$field], $param) !== 0)
 		{
 			return array(
 				'field' => $field,
 				'value' => $input[$field],
 				'rule'	=> __FUNCTION__,
-				'param' => $param				
+				'param' => $param
 			);
 		}
 	}

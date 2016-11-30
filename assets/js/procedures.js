@@ -60,10 +60,12 @@ listsContentChange();
 //Selecting procedure
 //-------------------------------------------------------------
 
-
+var arrProcSelectedName = [];
+var arrProcSelected = [];
 (function () {
     var numProcSelected = 0;
-    var arrProcSelected = [];
+
+
     var lists = document.getElementsByClassName('section11')[0].getElementsByClassName('content__body')[0].getElementsByClassName('item');
     var orderValue = document.getElementsByClassName('orderValue')[0];
     var orderNumber = document.getElementsByClassName('orderNumber')[0];
@@ -74,7 +76,6 @@ listsContentChange();
         for (var i = 0; i < lists.length; i++) {
             (function () {
                 var itemElement = lists[i];
-
                 lists[i].addEventListener('click', function () {
                     if (itemElement.className.indexOf('current') < 1) {
                         itemElement.className += ' current';

@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Toggle navigation
 //-------------------------------------------------------------
 (function () {
@@ -86,6 +87,11 @@ if (!document.getElementsByClassName('home')[0]) {
         if (isEscape) {
             document.getElementsByClassName('modal__appointment')[0].style.display = 'none';
             document.body.removeChild(document.getElementById('modal__backdrop'));
+            document.getElementById('appointment-form-msg').className = 'alert hidden';
+            document.getElementsByClassName('emailValidation modal__appointment--group')[0].className = 'emailValidation modal__appointment--group';
+            document.getElementsByClassName('phoneValidation modal__appointment--group')[0].className = 'phoneValidation modal__appointment--group';
+            document.getElementById('modalresultEmail').style.display = 'none';
+            document.getElementById('modalresultPhone').style.display = 'none';
         }
     };
 
@@ -95,6 +101,11 @@ if (!document.getElementsByClassName('home')[0]) {
         } else if (target.className == 'modal__backdrop') {
             document.getElementsByClassName('modal__appointment')[0].style.display = 'none';
             document.body.removeChild(document.getElementById('modal__backdrop'));
+            document.getElementById('appointment-form-msg').className = 'alert hidden';
+            document.getElementsByClassName('emailValidation modal__appointment--group')[0].className = 'emailValidation modal__appointment--group';
+            document.getElementsByClassName('phoneValidation modal__appointment--group')[0].className = 'phoneValidation modal__appointment--group';
+            document.getElementById('modalresultEmail').style.display = 'none';
+            document.getElementById('modalresultPhone').style.display = 'none';
         }
     });
 
@@ -104,6 +115,11 @@ if (!document.getElementsByClassName('home')[0]) {
     closeModal.addEventListener('click', function () {
         document.getElementsByClassName('modal__appointment')[0].style.display = 'none';
         document.body.removeChild(document.getElementById('modal__backdrop'));
+        document.getElementById('appointment-form-msg').className = 'alert hidden';
+        document.getElementsByClassName('emailValidation modal__appointment--group')[0].className = 'emailValidation modal__appointment--group';
+        document.getElementsByClassName('phoneValidation modal__appointment--group')[0].className = 'phoneValidation modal__appointment--group';
+        document.getElementById('modalresultEmail').style.display = 'none';
+        document.getElementById('modalresultPhone').style.display = 'none';
     });
 
 }());
@@ -154,7 +170,26 @@ $("#contact-form-gmap").submit(function () {
 // Appointment Form
 //-------------------------------------------------------------
 
+
 $("#appointment-form").submit(function () {
+
+    if (arrProcSelected.length > 0) {
+        for (var i = 0; i < arrProcSelected.length; i++) {
+            arrProcSelectedName.push(arrProcSelected[i].innerHTML.replace(/\<\/?span\>/g, ' '));
+        }
+    }
+
+    var proceduresObject = {
+        procedures: arrProcSelectedName
+    };
+
+    var strOfProcedures = "";
+    for (var key in proceduresObject) {
+        if (strOfProcedures != "") {
+            strOfProcedures += "&";
+        }
+        strOfProcedures += key + "=" + proceduresObject[key];
+    }
 
     $('#appointment-form-msg').addClass('hidden');
     $('#appointment-form-msg').removeClass('alert-success');
@@ -165,11 +200,12 @@ $("#appointment-form").submit(function () {
     $.ajax({
         type: "POST",
         url: "php/index.php",
-        data: $("#appointment-form").serialize(),
+        data: $("#appointment-form").serialize() + '&' + strOfProcedures,
         dataType: "json",
         success: function (data) {
 
             if ('success' == data.result) {
+
                 $('#appointment-form-msg').css('visibility', 'visible').hide().fadeIn().removeClass('hidden').addClass('alert-success');
                 $('#appointment-form-msg').html(data.msg[0]);
                 $('#appointment-form .btn-submit').removeAttr('disabled');
@@ -267,5 +303,87 @@ function setActiveMobile() {
 
 setActiveMobile();
 
+//Modal Form Validation
+//-------------------------------------------------------------------------------
 
 
+var appointmentForm = document.getElementById('appointment-form');
+var validate = document.getElementById('validateModal');
+var modalValidateEmail = true,
+    emailErr = appointmentForm.getElementsByClassName('emailValidation')[0];
+
+
+var modalValidatePhone = true,
+    phoneErr = appointmentForm.getElementsByClassName('phoneValidation')[0];
+
+
+validate.addEventListener('click', function () {
+    validateEmail(document.getElementById('email').value);
+    if (modalValidateEmail === false) {
+        emailErr.className = 'emailValidation modal__appointment--group err ';
+        document.getElementById('modalresultEmail').style.display = 'block';
+    } else if (modalValidateEmail === true) {
+        emailErr.className = 'emailValidation modal__appointment--group';
+        document.getElementById('modalresultEmail').style.display = 'none';
+    }
+
+    validatePhone(document.getElementById('appointment-phone').value);
+    if (modalValidatePhone === false) {
+        phoneErr.className = 'phoneValidation modal__appointment--group err ';
+        document.getElementById('modalresultPhone').style.display = 'block';
+    } else if (modalValidatePhone === true) {
+        phoneErr.className = 'phoneValidation modal__appointment--group';
+        document.getElementById('modalresultPhone').style.display = 'none';
+    }
+
+});
+
+
+//Contacts Form Validation
+//-------------------------------------------------------------------------------
+
+var contactFormGmap = document.getElementById('contact-form-gmap');
+var validateContacts = document.getElementById('validateContacts');
+var contactsValidateEmail = true,
+    contactsEmailErr = contactFormGmap.getElementsByClassName('contactsEmailValidation')[0];
+
+
+var contactsValidatePhone = true,
+    contactsPhoneErr = contactFormGmap.getElementsByClassName('contactsPhoneValidation')[0];
+
+
+validateContacts.addEventListener('click', function () {
+    validateEmail(document.getElementById('email_address').value);
+    if (contactsValidateEmail === false) {
+        contactsEmailErr.className = 'contactsEmailValidation contact__form--group err ';
+        document.getElementById('contactsResultEmail').style.display = 'block';
+    } else if (contactsValidateEmail === true) {
+        contactsEmailErr.className = 'contactsEmailValidation contact__form--group';
+        document.getElementById('contactsResultEmail').style.display = 'none';
+    }
+
+    validatePhone(document.getElementById('contact-form-phone').value);
+    if (contactsValidatePhone === false) {
+        contactsPhoneErr.className = 'contactsPhoneValidation contact__form--group err ';
+        document.getElementById('contactsResultPhone').style.display = 'block';
+    } else if (contactsValidatePhone === true) {
+        contactsPhoneErr.className = 'contactsPhoneValidation contact__form--group';
+        document.getElementById('contactsResultPhone').style.display = 'none';
+    }
+
+});
+
+
+//FUNCTIONS
+//-------------------------------------------------------------------------------
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    modalValidateEmail = re.test(email);
+    contactsValidateEmail = re.test(email);
+}
+
+function validatePhone(phone) {
+    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+    modalValidatePhone = re.test(phone);
+    contactsValidatePhone = re.test(phone);
+}

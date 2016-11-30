@@ -30,7 +30,7 @@ function sendContactForm($formData, $config){
     $validated = GUMP::is_valid($formData, array(
         'Имя' => 'required',
         'email' => 'required|valid_email',
-        'Телефон' => 'required',
+        'Телефон' => 'required'
     ));
 
     if ($validated === true) {
@@ -79,7 +79,7 @@ function sendAppointmentForm($formData, $config){
 
         // Create a message
         $message = Swift_Message::newInstance($config['appointment_form_subject'])
-            ->setFrom(array($formData['email'] => $formData['Имя'].' '.$formData['Фамилия']))
+            ->setFrom(array($formData['email'] => $formData['Имя'].' '.$formData['Фамилия']. ' '.$formData['procedures']))
             ->setTo(array($config['sender_email'] => $config['sender_name']))
             ->setBody($body, 'text/html');
 
@@ -89,7 +89,7 @@ function sendAppointmentForm($formData, $config){
         // Message Autoresponder
         $messageAutoresponder = Swift_Message::newInstance($config['appointment_autoresponder_subject'])
             ->setFrom(array($config['sender_email'] => $config['sender_name']))
-            ->setTo(array($formData['email'] => $formData['Имя'].' '.$formData['Фамилия']))
+            ->setTo(array($formData['email'] => $formData['Имя'].' '.$formData['Фамилия']. ' '.$formData['procedures']))
             ->setBody($bodyAutoresponder, 'text/html');
 
         // Send the message
